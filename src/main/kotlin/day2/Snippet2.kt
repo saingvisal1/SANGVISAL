@@ -12,7 +12,7 @@ package day2
 
 fun getServerPort(): Int {
     val portStr: String? = System.getenv("PORT")
-    return portStr.toInt() // 💥 CRASH: portStr is null when PORT is not set
+    return portStr?.toIntOrNull()?: 8080 // 💥 CRASH: portStr is null when PORT is not set
 }
 
 fun main() {
