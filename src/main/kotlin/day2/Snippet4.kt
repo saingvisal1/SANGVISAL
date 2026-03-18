@@ -10,8 +10,8 @@ package day2
 //         - One fix = one commit: fix: resolve NPE in getFirstAdmin list access
 
 fun getFirstAdmin(users: List<String?>): String {
-    val first = users.firstOrNull { it?.startsWith("admin_") == true }
-    return first.uppercase() // 💥 CRASH: first is String? not String
+    val first = users?.firstOrNull { it?.startsWith("admin_") == true }
+    return first?.uppercase() ?: "No admin found"// 💥 CRASH: first is String? not String
 }
 
 fun main() {

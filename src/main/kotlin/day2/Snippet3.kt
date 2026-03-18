@@ -14,7 +14,7 @@ data class Car(val engine: Engine?)
 data class Garage(val primaryCar: Car?)
 
 fun getHorsepower(garage: Garage?): String {
-    return "HP: " + garage.primaryCar.engine.horsepower // 💥 Multiple NPE risks
+    return "HP: " + (garage?.primaryCar?.engine?.horsepower)?:"N/A "// 💥 Multiple NPE risks
 }
 
 fun main() {
