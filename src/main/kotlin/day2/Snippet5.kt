@@ -14,9 +14,9 @@ package day2
 data class Product(val name: String?, val price: Double?)
 
 fun formatProduct(product: Product?): String {
-    val name = product!!.name!!       // 💥 !! used twice
-    val price = product!!.price!!     // 💥 !! used twice
-    return "$name costs $" + price.toString() // unsafe + concatenation
+    val name = product?.name       // 💥 !! used twice
+    val price = product?.price     // 💥 !! used twice
+    return "$name costs $" + price.toString() ?:"Invalid" // unsafe + concatenation
 }
 
 fun main() {
