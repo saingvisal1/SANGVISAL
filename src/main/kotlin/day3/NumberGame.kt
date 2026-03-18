@@ -29,15 +29,37 @@ const val MAX_ATTEMPTS = 7
 // TODO: Implement this function.
 // Return "TOO_LOW", "TOO_HIGH", or "CORRECT" using a when expression.
 fun getHint(guess: Int, secret: Int): String {
-    TODO("Implement using a when expression")
-}
+    //TODO("Implement using a when expression")
+    return when {
+        guess < secret -> "Too low, Try again."
+        guess > secret -> "Too high, Try again."
+        else -> "Correct! You guessed it in X $MAX_ATTEMPTS(s)!"
+    }
 
+}
 // TODO: Implement this function.
 // Use a loop that runs up to MAX_ATTEMPTS times.
 // Read player input with: val input = readLine()?.trim()?.toIntOrNull()
 // Handle invalid input gracefully (non-number input should not count as an attempt).
 fun playGame(secret: Int) {
-    TODO("Implement the game loop here")
+    //TODO("Implement the game loop here")
+    var attemptsUsed = 0
+
+    while (attemptsUsed < MAX_ATTEMPTS) {
+        print("Enter your guess: ")
+        val input = readLine()?.trim()?.toIntOrNull()
+
+        if (input == null) {
+            println("Invalid input. Please enter a number.")
+            continue // does NOT count as an attempt
+        }
+
+        attemptsUsed++
+        println(getHint(input, secret))
+    }
+
+    println("💀 Game over! The number was $secret.")
+
 }
 
 fun main() {
